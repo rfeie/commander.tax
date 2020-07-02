@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import Chrome from "./chrome";
 import CurrentGame from "./currentgame";
+import cuid from "cuid";
 const NewGameButton = ({ onClick }) => (
   <>
     <span className="inline-flex rounded-md shadow-sm">
       <button
-        onClick={e => {
+        onClick={(e) => {
           e.preventDefault();
           onClick();
         }}
@@ -33,17 +34,23 @@ const GameDisplay = ({ users, gamestate, updatePlayer, addPlayer }) => {
   return <section>No game!</section>;
 };
 
-const GameState = ({ newGame, gamestate, users, updateGameState }) => {
+const GameState = ({
+  newGame,
+  gamestate,
+  users,
+  updateGameState,
+  updatePlayerInfo,
+}) => {
   const addPlayer = ({ name, life }) => {
+    const id = cuid();
     updateGameState({
       ...gamestate,
-      players: { ...gamestate.players, [name]: { life } }
+      players: { ...gamestate.players, [id]: { life, name } },
     });
   };
-  const updatePlayer = name => (data = {}) => {
-    updateGameState({
-      ...gamestate,
-      players: { ...gamestate.players, [name]: { ...data } }
+  const updatePlayer = (id) => (data = {}) => {
+    updatePlayerInfo({
+      [id]: { ...data },
     });
   };
   return (

@@ -10,7 +10,7 @@ const AddPlayer = ({ addPlayer }) => {
         <section>
           <span className="inline-flex rounded-md shadow-sm">
             <button
-              onClick={e => {
+              onClick={(e) => {
                 e.preventDefault();
                 setState("opened");
               }}
@@ -64,7 +64,7 @@ const AddPlayerSection = ({ children }) => {
 };
 
 const ActivePlayers = ({ users = [] }) => {
-  return <>Active players: {users.map(user => user).join(", ")}</>;
+  return <>Active players: {users.map((user) => user).join(", ")}</>;
 };
 
 const CurrentGame = ({ gamestate, users, updatePlayer, addPlayer }) => {
@@ -85,8 +85,8 @@ const CurrentGame = ({ gamestate, users, updatePlayer, addPlayer }) => {
 
         <div className="mt-10">
           <div className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {Object.keys(players).map(key => {
-              const data = { ...players[key], name: key };
+            {Object.keys(players).map((key) => {
+              const data = { ...players[key] };
               return <PlayerInfo updatePlayer={updatePlayer(key)} {...data} />;
             })}
             <AddPlayerSection>

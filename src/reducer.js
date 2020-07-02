@@ -9,7 +9,7 @@ const reducer = (
     name: null,
     users: [],
     mode: "loading",
-    gamestate: {}
+    gamestate: {},
   },
   action
 ) => {
@@ -24,6 +24,23 @@ const reducer = (
 
       break;
 
+    case "PLAYER_UPDATE":
+      console.log("PLAYER_UPDATE", action.payload);
+      socket && socket.emit("PLAYER_UPDATE", action.payload);
+      break;
+
+    case "PLAYER_UPDATED":
+      console.log("PLAYER_UPDATED", action.payload, state);
+      const id = Object.keys(action.payload)[0];
+      state = {
+        ...state,
+        gamestate: {
+          ...state.gamestate,
+          players: { ...state.gamestate.players, [id]: action.payload[id] },
+        },
+        mode: "gamestate",
+      };
+      break;
     case "PLAYER_LIST_UPDATED":
       state = { ...state, users: action.payload };
       break;
@@ -34,7 +51,7 @@ const reducer = (
       socket &&
         socket.emit("UPDATE_GAMESTATE", {
           name: `${faker.commerce.productName()}: ${faker.hacker.phrase()}`,
-          players: {}
+          players: {},
         });
 
       break;
@@ -53,7 +70,7 @@ const reducer = (
       console.log("NAME_SUBMITTED", { action, socket });
       storeItem("playerIdentity", {
         name: action.payload.name,
-        status: "authenticating"
+        status: "authenticating",
       });
 
       socket && socket.emit("PLAYER_LOGIN", action.payload);

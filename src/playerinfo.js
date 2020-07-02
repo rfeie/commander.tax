@@ -35,9 +35,9 @@ const PlayerInfo = ({ name, life, updatePlayer }) => {
               <span className="relative z-0 inline-flex shadow-sm">
                 <button
                   type="button"
-                  onClick={e => {
+                  onClick={(e) => {
                     e.preventDefault();
-                    updatePlayer({ life: life - 1 });
+                    updatePlayer({ name, life: life - 1 });
                   }}
                   className="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm leading-5 font-medium text-gray-500 hover:text-gray-400 focus:z-10 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-100 active:text-gray-500 transition ease-in-out duration-150"
                 >
@@ -63,9 +63,9 @@ const PlayerInfo = ({ name, life, updatePlayer }) => {
                 </div>
                 <button
                   type="button"
-                  onClick={e => {
+                  onClick={(e) => {
                     e.preventDefault();
-                    updatePlayer({ life: life + 1 });
+                    updatePlayer({ name, life: life + 1 });
                   }}
                   className="-ml-px relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm leading-5 font-medium text-gray-500 hover:text-gray-400 focus:z-10 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-100 active:text-gray-500 transition ease-in-out duration-150"
                 >
