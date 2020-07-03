@@ -1,5 +1,5 @@
 import React from "react";
-// import { connect } from "react-redux";
+import { connect } from "react-redux";
 import {
   getCurrentPot,
   sendNameToServer,
@@ -22,24 +22,24 @@ const App = (props) => {
   const { mode, dispatch, gamestate, users } = props;
   const Comp = renderLookup[mode];
   console.log("App", dispatch);
-  // if (Comp) {
-  //   return (
-  //     <Comp
-  //       submitName={({ name }) =>
-  //         dispatch({ type: "NAME_SUBMITTED", payload: { name } })
-  //       }
-  //       users={users}
-  //       newGame={() => dispatch({ type: "PRESSED_NEW_GAME" })}
-  //       gamestate={gamestate}
-  //       updatePlayerInfo={(playerInfo) => {
-  //         dispatch({ type: "PLAYER_UPDATE", payload: playerInfo });
-  //       }}
-  //       updateGameState={(state) =>
-  //         dispatch({ type: "GAMESTATE_UPDATED", payload: state })
-  //       }
-  //     />
-  //   );
-  // }
+  if (Comp) {
+    return (
+      <Comp
+        submitName={({ name }) =>
+          dispatch({ type: "NAME_SUBMITTED", payload: { name } })
+        }
+        users={users}
+        newGame={() => dispatch({ type: "PRESSED_NEW_GAME" })}
+        gamestate={gamestate}
+        updatePlayerInfo={(playerInfo) => {
+          dispatch({ type: "PLAYER_UPDATE", payload: playerInfo });
+        }}
+        updateGameState={(state) =>
+          dispatch({ type: "GAMESTATE_UPDATED", payload: state })
+        }
+      />
+    );
+  }
   return renderLookup.fallback;
 };
 
@@ -53,5 +53,5 @@ const mapStateToProps = (state) => ({
   gamestate: state.gamestate,
 });
 
-// export default connect(mapStateToProps)(App);
-export default App;
+export default connect(mapStateToProps)(App);
+// export default App;
