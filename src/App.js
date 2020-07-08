@@ -21,6 +21,8 @@ const renderLookup = {
 const App = (props) => {
   const { mode, dispatch, gamestate, users } = props;
   const Comp = renderLookup[mode];
+  console.log("testing this", process.env.REACT_APP_SOCKET_URL);
+
   console.log("App", dispatch);
   if (Comp) {
     return (

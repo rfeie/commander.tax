@@ -74,9 +74,10 @@
   },
   "devDependencies": {},
   "scripts": {
-    "start": "PORT=3006 node scripts/start.js",
+    "start": "REACT_APP_SOCKET_URL='http://localhost:4321/';PORT=3006 node scripts/start.js",
     "_start": "npm run build:style &&  PORT=3006 node scripts/start.js",
-    "build": "node scripts/build.js",
+    "build": "REACT_APP_SOCKET_URL=\"https://commander-tax.herokuapp.com/\" npm run build:app",
+    "build:app": "node scripts/build.js",
     "build:style": "tailwind build src/styles/index.css -o src/styles/tailwind.css",
     "test": "node scripts/test.js --env=jsdom"
   },
