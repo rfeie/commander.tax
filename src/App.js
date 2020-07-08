@@ -1,11 +1,10 @@
 import React from "react";
 import { connect } from "react-redux";
-import {
-  getCurrentPot,
-  sendNameToServer,
-  sendPitchInToServer,
-  sendGetOneToServer,
-} from "./socket";
+import // getCurrentPot,
+// sendNameToServer,
+// sendPitchInToServer,
+// sendGetOneToServer,
+"./socket";
 import "./styles/generated.css";
 import Modal from "./modal";
 import Loading from "./loading";
