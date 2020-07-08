@@ -2,8 +2,9 @@ import io from "socket.io-client";
 import get from "lodash/get";
 import { getItem, storeItem } from "./storage";
 
-const socket = io("http://localhost:4321/", { multiplex: false });
+// const socket = io("http://localhost:4321/", { multiplex: false });
 // const socket = {};
+const socket = io(process.env.REACT_APP_SOCKET_URL, { multiplex: false });
 
 const configureSocket = (dispatch) => {
   console.log("configureSocket");
