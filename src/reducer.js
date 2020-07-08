@@ -1,5 +1,6 @@
 import { socket } from "./index";
 import faker from "faker";
+// eslint-disable-next-line no-unused-vars
 import { getItem, storeItem } from "./storage";
 
 const reducer = (
